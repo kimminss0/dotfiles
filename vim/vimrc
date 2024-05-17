@@ -1,0 +1,68 @@
+" This must be first; it may reset other options.
+set nocompatible
+
+language en_US.UTF-8
+
+" Detect file type, language-dependent indenting.
+filetype plugin indent on
+
+" Syntax highlight
+syntax enable
+
+" Colorscheme
+set termguicolors		" use 24-bit color in the terminal
+colorscheme habamax
+highlight clear ModeMsg		" override
+
+" Larger capacity on history/undo buffers
+set history=1000
+set undolevels=1000
+
+" Display numbers
+set number
+set relativenumber
+
+" Tab and indentations
+set smartindent
+set expandtab
+set shiftwidth=2
+set softtabstop=-1
+
+" Esc key less delay
+set ttimeout
+set ttimeoutlen=50
+
+" Mouse support
+set mouse=a
+
+" Better backspacing
+set backspace=indent,eol,start
+
+" Command-line completion
+set wildmode=list:longest,full
+
+" Highlight search results
+set hlsearch
+
+" Reset highlight for search results on redraw
+nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+
+" Netrw appearance
+let g:netrw_banner = 0		" disable banner
+let g:netrw_liststyle = 3	" list files in tree style
+
+" Terminal specifics, see  :help tmux-integration
+if !has('gui_running')
+  if &term == 'alacritty'
+    set ttymouse=sgr
+  elseif &term =~ '^\%(screen\|tmux\)' 
+    " Better mouse support, see  :help 'ttymouse'
+    set ttymouse=sgr
+
+    " Enable bracketed paste mode, see  :help xterm-bracketed-paste
+    let &t_BE = "\<Esc>[?2004h"
+    let &t_BD = "\<Esc>[?2004l"
+    let &t_PS = "\<Esc>[200~"
+    let &t_PE = "\<Esc>[201~"
+  endif
+endif
