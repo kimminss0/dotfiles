@@ -6,15 +6,17 @@ return {
     -- Setup language servers.
     local lspconfig = require('lspconfig')
 
-    lspconfig.pyright.setup {}
-    lspconfig.tsserver.setup {}
-    lspconfig.rust_analyzer.setup {
-      -- Server-specific settings. See `:help lspconfig-setup`
-      settings = {
-        -- ['rust-analyzer'] = {},
+    lspconfig.clangd.setup {
+      init_options = {
+        fallbackFlags = {'-std=c++17'}
       },
     }
-
+    lspconfig.pyright.setup {}
+    lspconfig.ts_ls.setup {}
+    lspconfig.hls.setup {
+      filetypes = { 'haskell', 'lhaskell', 'cabal' },
+    }
+    lspconfig.marksman.setup {}
 
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
