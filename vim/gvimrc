@@ -6,8 +6,3 @@ set lines=25
 
 " Disable cursor blinking 
 set guicursor+=a:blinkon0
-
-" Override cursor highlights
-highlight Cursor gui=reverse guifg=NONE guibg=NONE
-highlight clear lCursor
-highlight link lCursor Cursor
