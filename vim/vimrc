@@ -90,3 +90,8 @@ augroup osc52yank
     autocmd TextYankPost * if len(v:event.regcontents[0]) > 1 || len(v:event.regcontents) > 1 | call system("printf $'\\e]52;c;%s\\a' \"$(cat | base64)\" >> /dev/tty", v:event.regcontents)
   endif
 augroup END
+
+" Plugins management using vim-plug
+call plug#begin()
+
+call plug#end()
