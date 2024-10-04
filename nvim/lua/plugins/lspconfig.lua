@@ -1,7 +1,12 @@
 return {
   'neovim/nvim-lspconfig',
+  dependencies = {
+    'fzf-lua'
+  },
   config = function()
     vim.o.signcolumn = 'yes'
+    vim.highlight.priorities.semantic_tokens = 0
+
 
     -- Setup language servers.
     local lspconfig = require('lspconfig')
@@ -17,6 +22,8 @@ return {
       filetypes = { 'haskell', 'lhaskell', 'cabal' },
     }
     lspconfig.marksman.setup {}
+    lspconfig.gopls.setup{}
+    lspconfig.lua_ls.setup{}
 
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
