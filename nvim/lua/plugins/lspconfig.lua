@@ -1,12 +1,30 @@
 return {
   'neovim/nvim-lspconfig',
-  dependencies = {
-    'fzf-lua'
-  },
   config = function()
     vim.o.signcolumn = 'yes'
+
     vim.highlight.priorities.semantic_tokens = 0
 
+    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+      vim.lsp.handlers.hover,
+      {border = 'rounded'}
+    )
+
+    vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+      vim.lsp.handlers.signature_help,
+      {border = 'rounded'}
+    )
+
+    vim.diagnostic.config({
+      virtual_text = true,
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = false,
+      float = {
+        border = "rounded",
+      }
+    })
 
     -- Setup language servers.
     local lspconfig = require('lspconfig')
