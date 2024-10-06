@@ -42,7 +42,7 @@ $HOME/
 
 ## Vim
 
-Portable, bloatless Vim configuration. No plugin managers are required.
+Portable, bloatless Vim configuration.
 
 Place the files as follows:
 ```
