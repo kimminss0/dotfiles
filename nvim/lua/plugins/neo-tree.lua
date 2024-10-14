@@ -27,16 +27,6 @@ return {
     },
   },
   config = function()
-    -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-    vim.fn.sign_define("DiagnosticSignError",
-      { text = "", texthl = "DiagnosticSignError" })
-    vim.fn.sign_define("DiagnosticSignWarn",
-      { text = "", texthl = "DiagnosticSignWarn" })
-    vim.fn.sign_define("DiagnosticSignInfo",
-      { text = "", texthl = "DiagnosticSignInfo" })
-    vim.fn.sign_define("DiagnosticSignHint",
-      { text = "", texthl = "DiagnosticSignHint" })
-
     require("neo-tree").setup({
       close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = "rounded",
@@ -102,17 +92,26 @@ return {
         git_status = {
           symbols = {
             -- Change type
-            added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-            modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-            deleted   = "✖", -- this can only be used in the git_status source
-            renamed   = "󰁕", -- this can only be used in the git_status source
-            -- Status type
-            untracked = "",
-            ignored   = "",
+            -- added     = "",
+            -- modified  = "",
+            --deleted   = " ", -- this can only be used in the git_status source
+            --renamed   = " ", -- this can only be used in the git_status source
+            ---- Status type
+            --untracked = " ",
+            ignored   = "󱋭",
             unstaged  = "󰄱",
-            staged    = "",
-            conflict  = "",
-          }
+            staged    = "󰱒",
+            conflict  = "󰘭",
+          },
+         },
+        diagnostics = {
+          symbols = {
+            error = " ",
+            warn = " ",
+            info = " ",
+            hint = " ",
+          },
+          highlight = "NeoTreeDiagnostic",
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
         file_size = {
@@ -320,7 +319,6 @@ return {
         }
       }
     })
-
-    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+    vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>")
   end
 }

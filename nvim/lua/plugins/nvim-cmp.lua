@@ -1,26 +1,11 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
-    'neovim/nvim-lspconfig',    -- Collection of configurations for built-in LSP client
     'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
     'L3MON4D3/LuaSnip',         -- Snippets plugin
   },
   config = function()
-    -- Add additional capabilities supported by nvim-cmp
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-    local lspconfig = require('lspconfig')
-
-    -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-    local servers = { 'clangd', 'rust_analyzer', 'pyright', 'ts_ls' }
-    for _, lsp in ipairs(servers) do
-      lspconfig[lsp].setup {
-        -- on_attach = my_custom_on_attach,
-        capabilities = capabilities,
-      }
-    end
-
     -- luasnip setup
     local luasnip = require 'luasnip'
 
@@ -33,41 +18,50 @@ return {
         end,
       },
       sources = {
+        -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
       },
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
+      -- window = {
+      --   completion = cmp.config.window.bordered(),
+      --   documentation = cmp.config.window.bordered(),
+      -- },
       mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- Down
         -- C-b (back) C-f (forward) for snippet placeholder navigation.
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
+        -- ['<C-Space>'] = cmp.mapping.complete(),
+        -- ['<CR>'] = cmp.mapping.confirm {
+        --   behavior = cmp.ConfirmBehavior.Replace,
+        --   select = true,
+        -- },
+        -- ['<Tab>'] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_next_item()
+        --   elseif luasnip.expand_or_jumpable() then
+        --     luasnip.expand_or_jump()
+        --   else
+        --     fallback()
+        --   end
+        -- end, { 'i', 's' }),
+        -- ['<S-Tab>'] = cmp.mapping(function(fallback)
+        --   if cmp.visible() then
+        --     cmp.select_prev_item()
+        --   elseif luasnip.jumpable(-1) then
+        --     luasnip.jump(-1)
+        --   else
+        --     fallback()
+        --   end
+        -- end, { 'i', 's' }),
+
+        -- Previous 'Tab' and 'S-Tab' can be replaced with <C-n> and <C-p>.
+        ['<Tab>'] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
         },
-        ['<Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
+
       }),
     }
+    vim.keymap.set("i", "<C-x><C-o>", cmp.complete)
   end
 }

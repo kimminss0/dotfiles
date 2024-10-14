@@ -10,5 +10,24 @@ vim.o.relativenumber = true
 
 -- vim.o.laststatus = 0
 
-vim.cmd "colorscheme retrobox"
-vim.cmd "hi MatchParen term=reverse cterm=bold ctermfg=199 gui=bold guifg=#ff00af"
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--   pattern = "retrobox",
+--   command = "highlight link NormalFloat Normal",
+-- })
+-- vim.o.background = "light"
+-- vim.cmd [[
+-- autocmd ColorScheme retrobox highlight NormalFloat guifg=none guibg=none
+-- autocmd ColorScheme retrobox highlight FloatBorder guifg=none guibg=none
+-- colorscheme retrobox
+-- ]]
+
+-- 'retrobox' with bold font disabled for the Function group
+vim.cmd [[
+
+autocmd ColorScheme retrobox highlight Function gui=None
+autocmd ColorScheme retrobox highlight DiagnosticInfo guifg=Gray
+autocmd ColorScheme retrobox highlight DiagnosticUnderlineInfo guisp=Gray
+set bg=light
+colorscheme retrobox
+
+]]
