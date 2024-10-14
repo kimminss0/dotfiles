@@ -11,7 +11,8 @@ syntax enable
 
 " Colorscheme
 set termguicolors		" use 24-bit color in the terminal
-colorscheme habamax
+colorscheme retrobox
+set bg=light
 highlight clear ModeMsg		" override
 
 " Larger capacity on history/undo buffers
