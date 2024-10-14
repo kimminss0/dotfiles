@@ -9,44 +9,61 @@ Included configurations:
 - Tmux
 - Vim
 
-## Alacritty
+## Configuration
+
+> **TIP**: You can create a symbolic link by following command:
+>
+> ```bash
+> # Create a symbolic link using absolute paths for both the source and
+> # destination.
+>
+> # Assume that the repo is located at "~/.local/dotfiles".
+> # Example for neovim:
+> ln -s ~/.config/nvim ~/.local/dotfiles/nvim
+> ```
+
+### Alacritty
 
 You need to replace the font with the installed one in the configuration file.
 
 Place the files as follows:
+
 ```
-$HOME/
-└── .config/
-    └── alacritty -> /path/to/repo/alacritty/
+~/.config/alacritty -> /path/to/repo/alacritty/
 ```
 
-## Neovim
+### Neovim
 
-There are some dependencies for plugins, e.g., nvim-lspconfig. See their documentations.
+There are some dependencies for plugins, e.g., nvim-lspconfig. See their
+documentations.
 
 Place the files as follows:
-```
-$HOME/
-└── .config/
-    └── nvim -> /path/to/repo/nvim/
-```
 
-## Tmux
-
-Place the files as follows:
 ```
-$HOME/
-└── .config/
-    └── tmux -> /path/to/repo/tmux/
+~/.config/nvim -> /path/to/repo/nvim/
 ```
 
-## Vim
-
-Portable, bloatless Vim configuration.
+### Tmux
 
 Place the files as follows:
+
 ```
-$HOME/
-└── .vim -> /path/to/repo/vim/
+~/.config/tmux -> /path/to/repo/tmux/
+```
+
+### Vim
+
+Portable Vim configuration.
+
+Place the files as follows:
+
+```
+~/.vim -> /path/to/repo/vim/
+```
+
+Or, for recent versions of vim:
+
+```
+~/.config/vim -> /path/to/repo/vim/
 ```
 
