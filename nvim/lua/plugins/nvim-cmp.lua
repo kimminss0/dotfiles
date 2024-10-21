@@ -1,5 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
+  cond = not vim.g.vscode,
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',     -- LSP source for nvim-cmp
     'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp

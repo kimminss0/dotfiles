@@ -2,6 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
+    local highlight_enable = not vim.g.vscode
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "c",
@@ -18,11 +19,13 @@ return {
       },
       sync_install = false,
       highlight = {
-        enable = true,
-        --disable = { "haskell" },
+        enable = highlight_enable,
         additional_vim_regex_highlighting = false,
       },
-      indent = { enable = true },
+      indent = {
+        enable = true,
+        disable = { "markdown" },
+      },
     })
   end
 }

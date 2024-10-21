@@ -6,7 +6,7 @@ return {
   config = function()
     -- TODO: Research configs!
     -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    require'nvim-treesitter.configs'.setup {
+    require 'nvim-treesitter.configs'.setup {
       textobjects = {
         move = {
           enable = true,

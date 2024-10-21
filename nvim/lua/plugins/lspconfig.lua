@@ -1,5 +1,6 @@
 return {
   'neovim/nvim-lspconfig',
+  cond = not vim.g.vscode,
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
   },
@@ -61,9 +62,6 @@ return {
     }
     lspconfig.hls.setup {
       filetypes = { 'haskell', 'lhaskell', 'cabal' },
-      capabilities = capabilities,
-    }
-    lspconfig.marksman.setup {
       capabilities = capabilities,
     }
     lspconfig.gopls.setup {

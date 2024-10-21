@@ -1,5 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
+  cond = not vim.g.vscode,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require("fzf-lua").setup {}
