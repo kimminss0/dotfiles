@@ -2,11 +2,12 @@ if not vim.g.vscode then
   return
 end
 
-vim.opt.foldopen:remove('hor')
+vim.opt.foldopen:remove 'hor'
 
-local vscode = require('vscode')
+local vscode = require 'vscode'
 local scrollHalfPage = function(to)
-  vscode.eval(string.format([[
+  vscode.eval(string.format(
+    [[
 
 class EditorViewportState {
   #textEditor;
@@ -213,9 +214,15 @@ if (postScrollCursorPosition !== null) {
   await postScrollCapture.moveCursorTo(postScrollCursorPosition);
 }
 
- ]], to))
+ ]],
+    to
+  ))
 end
 
 local opts = { noremap = true, silent = false }
-vim.keymap.set({'n', 'v'}, '<c-u>', function() scrollHalfPage('up') end, opts)
-vim.keymap.set({'n', 'v'}, '<c-d>', function() scrollHalfPage('down') end, opts)
+vim.keymap.set({ 'n', 'v' }, '<c-u>', function()
+  scrollHalfPage 'up'
+end, opts)
+vim.keymap.set({ 'n', 'v' }, '<c-d>', function()
+  scrollHalfPage 'down'
+end, opts)
