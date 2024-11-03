@@ -1,5 +1,12 @@
 return {
   {
+    'cormacrelf/dark-notify',
+    priority = 1001,
+    config = function()
+      require('dark_notify').run()
+    end,
+  },
+  {
     'ellisonleao/gruvbox.nvim',
     priority = 1000, -- Set higher priority to the default colorscheme
     config = function()
@@ -13,7 +20,7 @@ return {
         },
         contrast = 'hard',
       }
-      vim.opt.background = 'light'
+      --vim.opt.background = 'light'
       vim.cmd.colorscheme 'gruvbox'
     end,
   },
