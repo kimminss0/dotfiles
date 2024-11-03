@@ -61,6 +61,8 @@ return {
           -- end,
           markdown = { 'prettierd', 'prettier' },
 
+          css = { 'prettierd', 'prettier' },
+
           go = { 'gofmt' }, -- TODO: chain 'goimport', etc? is 'goimport' included in 'gofmt'?
         },
       }

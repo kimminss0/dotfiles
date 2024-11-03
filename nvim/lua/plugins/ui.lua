@@ -2,7 +2,10 @@ return {
   { -- Status line
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {},
+    opts = {
+      options = { section_separators = '', component_separators = '' },
+      -- options = { section_separators = '', component_separators = '│' },
+    },
   },
 
   { -- Add indentation guides even on blank lines
