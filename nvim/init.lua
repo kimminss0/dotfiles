@@ -286,6 +286,9 @@ vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSi
 vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
 vim.fn.sign_define('DiagnosticSignHint', { text = ' ', texthl = 'DiagnosticSignHint' })
 
+-- Set sensible environment variables, e.g. API keys
+require 'configs/env'
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'

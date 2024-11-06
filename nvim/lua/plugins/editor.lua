@@ -71,6 +71,7 @@ return {
         { '<leader>h', group = 'git hunk', mode = { 'n', 'v' } },
         { '<leader>s', group = 'search' },
         { '<leader>t', group = 'toggle' },
+        { '<leader>c', group = 'code companion' },
 
         -- TODO: check this if it is required after the release of nvim 0.11.
         { 'gr', group = 'rename/references', mode = { 'n', 'v' } },
@@ -148,16 +149,10 @@ return {
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      vim.keymap.set('n', '<leader><C-f>', builtin.find_files, { desc = 'search files' })
-      -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>/', function()
-        -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end, { desc = 'search in current buffer' })
-      vim.keymap.set('n', '<leader><C-g>', builtin.live_grep, { desc = 'search by grep' })
+
+      vim.keymap.set('n', '<C-f>', builtin.find_files, { desc = 'files' })
+      vim.keymap.set('n', '<C-g>', builtin.live_grep, { desc = 'live grep' })
+      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'find existing buffers' })
 
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'help' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = 'keymaps' })
@@ -166,12 +161,12 @@ return {
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'current word' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'live grep' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'diagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'resume search' })
-      vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = 'recent files' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'find existing buffers' })
+      vim.keymap.set('n', '<leader>s.', builtin.resume, { desc = 'resume search' })
+      vim.keymap.set('n', '<leader>sr', builtin.oldfiles, { desc = 'recent files' })
+      vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>sb', function()
+      vim.keymap.set('n', '<leader>s/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
@@ -181,7 +176,7 @@ return {
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>s/', function()
+      vim.keymap.set('n', '<leader>so', function()
         builtin.live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',

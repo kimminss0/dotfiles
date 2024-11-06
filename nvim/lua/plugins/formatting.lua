@@ -34,12 +34,18 @@ return {
       return {
         notify_on_error = false,
         format_on_save = function(bufnr)
+          -- Disable for some filetypes
+          local filetype_disable_format_on_save = { markdown = true }
+          if filetype_disable_format_on_save[vim.bo[bufnr].filetype] then
+            return
+          end
+
           -- Disable "format_on_save lsp_fallback" for languages that don't
           -- have a well standardized coding style. You can add additional
           -- languages here or re-enable it for the disabled ones.
-          local disable_filetypes = { c = true, cpp = true }
+          local filetype_disable_lsp_fallback = { c = true, cpp = true }
           local lsp_format_opt
-          if disable_filetypes[vim.bo[bufnr].filetype] then
+          if filetype_disable_lsp_fallback[vim.bo[bufnr].filetype] then
             lsp_format_opt = 'never'
           else
             lsp_format_opt = 'fallback'
