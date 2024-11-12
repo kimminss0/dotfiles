@@ -11,13 +11,33 @@ syntax enable
 
 " Colorscheme
 set termguicolors		" use 24-bit color in the terminal
-colorscheme retrobox
 set bg=light
 highlight clear ModeMsg		" override
 
 " Larger capacity on history/undo buffers
 set history=1000
 set undolevels=1000
+set undofile
+
+" Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+set ignorecase
+set smartcase
+
+" Decrease update time
+set updatetime=250
+
+" Configure how new splits should be opened
+set splitright
+set splitbelow
+
+" Add cscope search result to quickfix list
+set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
+
+" Show which line your cursor is on
+set cursorline
+
+" Minimal number of screen lines to keep above and below the cursor.
+set scrolloff=10
 
 " Display numbers
 set number
@@ -109,5 +129,19 @@ endif
 call plug#begin()
 
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+Plug 'morhetz/gruvbox'
+Plug 'preservim/tagbar'
+Plug 'junegunn/fzf',  { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'dr-kino/cscope-maps'
 
 call plug#end()
+
+let g:gruvbox_contrast_light = 'hard'
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
+
+" Check os and if freebsd, use exctags instead of ctags
+if has('unix') && system('uname') =~? 'FreeBSD'
+  let g:tagbar_ctags_bin = 'exctags'
+endif
