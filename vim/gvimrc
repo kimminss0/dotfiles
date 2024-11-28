@@ -1,5 +1,6 @@
 set guioptions=egm
-set guifont=MesloLGS\ Nerd\ Font:h16
+set guifont=Meslo\ LG\ M\ DZ:h14
+set guifontwide=Noto\ Sans\ CJK\ KR:h15,Symbols\ Nerd\ Font\ Mono
 
 set columns=80
 set lines=25

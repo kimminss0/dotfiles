@@ -17,7 +17,6 @@ highlight clear ModeMsg		" override
 " Larger capacity on history/undo buffers
 set history=1000
 set undolevels=1000
-set undofile
 
 " Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 set ignorecase
@@ -42,6 +41,11 @@ set scrolloff=10
 " Display numbers
 set number
 set relativenumber
+
+" Clipboard setup
+if (has('clipboard'))
+  set clipboard+=unnamed
+endif
 
 " Tab and indentations
 set smartindent
@@ -107,7 +111,8 @@ endif
 "
 " Copy text using the ANSI OSC52 sequence if the vim compilation did not
 " include clipboard support, e.g. on server environment. 
-if (!has('nvim') && !has('clipboard_working'))
+if (!has('nvim') && !has('clipboard'))
+" if (!has('nvim') && !has('clipboard_working'))
     " In the event that the clipboard isn't working, it's quite likely that
     " the + and * registers will not be distinct from the unnamed register. In
     " this case, a:event.regname will always be '' (empty string). However, it
@@ -134,6 +139,7 @@ Plug 'preservim/tagbar'
 Plug 'junegunn/fzf',  { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dr-kino/cscope-maps'
+Plug 'brglng/vim-im-select'
 
 call plug#end()
 
@@ -145,3 +151,6 @@ colorscheme gruvbox
 if has('unix') && system('uname') =~? 'FreeBSD'
   let g:tagbar_ctags_bin = 'exctags'
 endif
+
+" Disable IM switching in the command-line mode
+let g:im_select_enable_cmd_line=0
