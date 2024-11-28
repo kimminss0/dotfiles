@@ -4,6 +4,10 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
 
+export VISUAL=vim
+export EDITOR=vim
+export PAGER=less
+
 # Completion
 zstyle ':completion:*' completer _expand _complete _approximate
 zstyle ':completion:*' list-colors ''
