@@ -17,7 +17,13 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'hrsh7th/nvim-cmp', -- Optional: For using slash commands and variables in the chat buffer
       'nvim-telescope/telescope.nvim', -- Optional: For using slash commands
-      { 'MeanderingProgrammer/render-markdown.nvim', ft = { 'markdown', 'codecompanion' } },
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        ft = {
+          -- 'markdown',
+          'codecompanion',
+        },
+      },
     },
     keys = {
       { '<leader>ca', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, desc = 'actions' },
