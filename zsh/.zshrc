@@ -1,5 +1,5 @@
 # History
-HISTFILE=~/.histfile
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt HIST_IGNORE_DUPS
@@ -28,3 +28,5 @@ PROMPT="%m ${cUSR}%n${cSTD} ${cPWD}%~${cSTD}
 %# "
 unset cUSR cPWD cSTD
 
+# Use CTRL-S for i-search
+stty -ixon
