@@ -36,7 +36,7 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set cursorline
 
 " Minimal number of screen lines to keep above and below the cursor.
-set scrolloff=10
+set scrolloff=5
 
 " Display numbers
 set number
