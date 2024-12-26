@@ -14,6 +14,7 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle ':completion:*' menu select
 zstyle :compinstall filename '~/.zshrc'
+zstyle ':completion:*:functions' ignored-patterns '_*'
 
 autoload -Uz compinit
 compinit
