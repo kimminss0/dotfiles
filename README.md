@@ -8,6 +8,7 @@ Included configurations:
 - Neovim
 - Tmux
 - Vim
+- Zsh
 
 ## Configuration
 
@@ -67,3 +68,13 @@ Or, for recent versions of vim:
 ~/.config/vim -> /path/to/repo/vim/
 ```
 
+### Zsh
+
+`~/.zshrc`:
+```sh
+# source rc script from the repo
+. /path/to/repo/zsh/zshrc
+
+# local specific scripts go here
+# ...
+```
