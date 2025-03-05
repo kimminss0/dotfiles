@@ -120,6 +120,9 @@ return {
           end,
         },
       }
+
+      local lspconfig = require 'lspconfig'
+      lspconfig.ocamllsp.setup {}
     end,
   },
 }
