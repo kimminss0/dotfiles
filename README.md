@@ -20,7 +20,7 @@ Included configurations:
 >
 > # Assume that the repo is located at "~/.local/dotfiles".
 > # Example for neovim:
-> ln -s ~/.config/nvim ~/.local/dotfiles/nvim
+> ln -s ~/.local/dotfiles/nvim ~/.config/nvim
 > ```
 
 ### Alacritty
