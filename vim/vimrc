@@ -132,7 +132,6 @@ endif
 
 " Plugins management using vim-plug
 call plug#begin()
-
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 Plug 'morhetz/gruvbox'
 Plug 'preservim/tagbar'
@@ -142,6 +141,7 @@ Plug 'dr-kino/cscope-maps'
 Plug 'brglng/vim-im-select'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 let g:gruvbox_contrast_light = 'hard'
