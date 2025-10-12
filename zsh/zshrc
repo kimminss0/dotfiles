@@ -1,7 +1,7 @@
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=20000
+SAVEHIST=20000
 setopt HIST_IGNORE_DUPS
 
 export VISUAL=vim
@@ -29,5 +29,10 @@ PROMPT="%m ${cUSR}%n${cSTD} ${cPWD}%~${cSTD}
 %# "
 unset cUSR cPWD cSTD
 
-# Use CTRL-S for i-search
-stty -ixon
+if command -v fzf >/dev/null 2>&1; then
+  # Set up fzf key bindings and fuzzy completion
+  source <(fzf --zsh)
+else
+  # Use CTRL-S for i-search
+  stty -ixon
+fi

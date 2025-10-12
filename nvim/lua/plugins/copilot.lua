@@ -1,7 +1,7 @@
 return {
   {
     'zbirenbaum/copilot.lua',
-    enabled = true,
+    enabled = false,
     config = function()
       require('copilot').setup {
         suggestion = {
@@ -12,6 +12,7 @@ return {
   },
   {
     'olimorris/codecompanion.nvim',
+    enabled = false,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',

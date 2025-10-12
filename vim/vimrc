@@ -9,6 +9,9 @@ filetype plugin indent on
 " Syntax highlight
 syntax enable
 
+" Edit other buffer without saving current one
+set hidden
+
 " Colorscheme
 set termguicolors		" use 24-bit color in the terminal
 set bg=light
@@ -134,6 +137,7 @@ endif
 call plug#begin()
 Plug 'ojroques/vim-oscyank', {'branch': 'main'}
 Plug 'morhetz/gruvbox'
+Plug 'rakr/vim-one'
 Plug 'preservim/tagbar'
 Plug 'junegunn/fzf',  { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -146,7 +150,8 @@ call plug#end()
 
 let g:gruvbox_contrast_light = 'hard'
 let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+"colorscheme gruvbox
+colorscheme one
 
 " Check os and if freebsd, use exctags instead of ctags
 if has('unix') && system('uname') =~? 'FreeBSD'

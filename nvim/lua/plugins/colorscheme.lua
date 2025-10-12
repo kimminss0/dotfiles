@@ -1,7 +1,25 @@
 return {
+--  {
+--    "rakr/vim-one",
+--    priority = 1000, -- make sure to load this before all the other start plugins
+--    config = function()
+--      vim.cmd.colorscheme 'one'
+--    end
+--  },
+  {
+    "navarasu/onedark.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require('onedark').setup {
+        style = 'darker'
+      }
+      -- Enable theme
+      require('onedark').load()
+    end
+  },
   {
     'ellisonleao/gruvbox.nvim',
-    priority = 1000, -- Set higher priority to the default colorscheme
+    -- priority = 1000, -- Set higher priority to the default colorscheme
     config = function()
       require('gruvbox').setup {
         italic = {
@@ -13,7 +31,7 @@ return {
         },
         contrast = 'hard',
       }
-      vim.cmd.colorscheme 'gruvbox'
+      --vim.cmd.colorscheme 'gruvbox'
     end,
   },
   { 'shaunsingh/nord.nvim', config = false },

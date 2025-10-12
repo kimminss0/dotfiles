@@ -33,28 +33,28 @@ return {
       ---@type conform.setupOpts
       return {
         notify_on_error = false,
-        format_on_save = function(bufnr)
-          -- Disable for some filetypes
-          local filetype_disable_format_on_save = { markdown = true }
-          if filetype_disable_format_on_save[vim.bo[bufnr].filetype] then
-            return
-          end
+        -- format_on_save = function(bufnr)
+        --   -- Disable for some filetypes
+        --   local filetype_disable_format_on_save = { markdown = true }
+        --   if filetype_disable_format_on_save[vim.bo[bufnr].filetype] then
+        --     return
+        --   end
 
-          -- Disable "format_on_save lsp_fallback" for languages that don't
-          -- have a well standardized coding style. You can add additional
-          -- languages here or re-enable it for the disabled ones.
-          local filetype_disable_lsp_fallback = { c = true, cpp = true }
-          local lsp_format_opt
-          if filetype_disable_lsp_fallback[vim.bo[bufnr].filetype] then
-            lsp_format_opt = 'never'
-          else
-            lsp_format_opt = 'fallback'
-          end
-          return {
-            timeout_ms = 500,
-            lsp_format = lsp_format_opt,
-          }
-        end,
+        --   -- Disable "format_on_save lsp_fallback" for languages that don't
+        --   -- have a well standardized coding style. You can add additional
+        --   -- languages here or re-enable it for the disabled ones.
+        --   local filetype_disable_lsp_fallback = { c = true, cpp = true }
+        --   local lsp_format_opt
+        --   if filetype_disable_lsp_fallback[vim.bo[bufnr].filetype] then
+        --     lsp_format_opt = 'never'
+        --   else
+        --     lsp_format_opt = 'fallback'
+        --   end
+        --   return {
+        --     timeout_ms = 500,
+        --     lsp_format = lsp_format_opt,
+        --   }
+        -- end,
         formatters_by_ft = {
           lua = { 'stylua' },
           -- Conform can also run multiple formatters sequentially
